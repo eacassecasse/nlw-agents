@@ -1,0 +1,27 @@
+services:
+
+  database:
+    image: postgres:17
+    restart: unless-stopped
+    shm_size: 512mb
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: agents
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  nlw-agents-pg:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: agents
+    ports:
+      - "5433:5433"
+    volumes:
+      - ./docker/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+volumes:
+  postgres_data:
