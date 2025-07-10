@@ -6,3 +6,4 @@ export const rooms = pgTable("rooms", {
   description: text(),
   createAt: timestamp().defaultNow().notNull(),
 });
+

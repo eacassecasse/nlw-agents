@@ -7,6 +7,9 @@ import {
 import { fastifyCors } from "@fastify/cors";
 import { ENV } from "./env.ts";
 import { getRoomsRoute } from "./http/routes/get-rooms.ts";
+import { createRoomRoute } from "./http/routes/create-room.ts";
+import { getRoomQuestionsRoute } from "./http/routes/get-room-questions.ts";
+import { createQuestionRoute } from "./http/routes/create-question.ts";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -22,6 +25,9 @@ app.get("/api/v1/health", () => {
 });
 
 app.register(getRoomsRoute, { prefix: "/api/v1" });
+app.register(createRoomRoute, { prefix: "/api/v1" });
+app.register(getRoomQuestionsRoute, { prefix: "/api/v1" });
+app.register(createQuestionRoute, { prefix: "/api/v1" }); 
 
 app.listen({
   port: ENV.PORT,

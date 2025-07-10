@@ -13,6 +13,9 @@ await seed(client, schema).refine((f) => {
         description: f.loremIpsum(),
       },
     },
+    questions: {
+      count: 20,
+    }
   };
 });
 
