@@ -2,15 +2,13 @@
 
 <div align="center">
 
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![React](https://img.shields.io/badge/React_19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![React Query](https://img.shields.io/badge/React%20Query-FF4154?style=for-the-badge&logo=react-query&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TanStack Query](https://img.shields.io/badge/TanStack_Query-FF4154?style=for-the-badge&logo=react-query&logoColor=white)
 
-**Interface moderna e responsiva construída com React 19 e TailwindCSS**
-
-[🚀 Quick Start](#quick-start) • [🎨 UI/UX](#design-system) • [📱 Features](#funcionalidades) • [🔧 Build](#build-e-deploy)
+**Interface moderna e responsiva com React 19 e TailwindCSS**
 
 </div>
 
@@ -18,43 +16,41 @@
 
 ## 📖 Sobre
 
-O frontend do **NLW Agents** é uma Single Page Application (SPA) moderna construída com as mais recentes tecnologias React. Oferece uma experiência de usuário fluida e responsiva para gerenciamento de salas com design system consistente.
+Frontend da aplicação **NLW Agents** desenvolvido com **React 19**, **TypeScript** e **TailwindCSS**. Oferece uma interface moderna para:
 
-### ✨ Características Principais
-
-- ⚛️ **React 19** - Versão mais recente com concurrent features
-- ⚡ **Vite** - Build tool ultra-rápido com HMR
-- 🎨 **TailwindCSS v4** - Design system utility-first
-- 🔄 **TanStack Query** - Gerenciamento de estado servidor
-- 🧭 **React Router v7** - Roteamento moderno
-- ♿ **Acessibilidade** - Componentes Radix UI
-- 📱 **Responsivo** - Design mobile-first
-- 🎯 **Type-Safe** - TypeScript em toda aplicação
+- 🏠 **Gerenciamento de salas** com formulários intuitivos
+- 🎤 **Gravação de áudio** diretamente no navegador
+- 💬 **Sistema de perguntas** em tempo real
+- 📱 **Design responsivo** e acessível
+- ⚡ **Performance otimizada** com Vite
 
 ---
 
 ## 🛠️ Stack Tecnológica
 
 ### **Core Framework**
-- **[React 19](https://react.dev/)** - Biblioteca para UI com concurrent features
-- **[TypeScript](https://www.typescriptlang.org/)** - Superset tipado do JavaScript
-- **[Vite](https://vitejs.dev/)** - Build tool e dev server de próxima geração
+- **[React 19](https://react.dev/)** - Biblioteca para interfaces de usuário (última versão)
+- **[TypeScript](https://www.typescriptlang.org/)** - Tipagem estática para JavaScript
+- **[Vite](https://vitejs.dev/)** - Build tool e dev server ultra-rápido
 
 ### **Styling & UI**
-- **[TailwindCSS v4](https://tailwindcss.com/)** - Framework CSS utility-first
-- **[Radix UI](https://radix-ui.com/)** - Componentes primitivos acessíveis
-- **[Lucide React](https://lucide.dev/)** - Ícones SVG modernos
-- **[Class Variance Authority](https://cva.style/docs)** - Variantes de componentes
-- **[clsx](https://github.com/lukeed/clsx)** + **[tailwind-merge](https://github.com/dcastil/tailwind-merge)** - Utilitários CSS
+- **[TailwindCSS 4](https://tailwindcss.com/)** - Framework CSS utility-first
+- **[Radix UI](https://radix-ui.com/)** - Componentes acessíveis e customizáveis
+- **[Lucide React](https://lucide.dev/)** - Ícones SVG otimizados
+- **[Class Variance Authority](https://cva.style/)** - Variantes de componentes
+- **[Tailwind Merge](https://github.com/dcastil/tailwind-merge)** - Merge de classes CSS
 
-### **State Management & Data Fetching**
-- **[TanStack Query](https://tanstack.com/query)** - Server state management
-- **[React Router DOM](https://reactrouter.com/)** - Roteamento declarativo
+### **State Management & HTTP**
+- **[TanStack Query](https://tanstack.com/query)** - Gerenciamento de estado servidor
+- **[React Hook Form](https://react-hook-form.com/)** - Formulários performáticos
+- **[Zod](https://zod.dev/)** - Validação de schemas
+
+### **Routing & Navigation**
+- **[React Router DOM 7](https://reactrouter.com/)** - Roteamento SPA moderno
 
 ### **Development Tools**
 - **[Biome](https://biomejs.dev/)** - Linter e formatter moderno
-- **[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react)** - Plugin React para Vite
-- **[tw-animate-css](https://github.com/tw-elements/tw-animate-css)** - Animações TailwindCSS
+- **[Ultracite](https://github.com/ultracite/ultracite)** - Utilitários de desenvolvimento
 
 ---
 
@@ -62,303 +58,260 @@ O frontend do **NLW Agents** é uma Single Page Application (SPA) moderna constr
 
 ### **Pré-requisitos**
 - Node.js 18+
-- npm ou yarn
-- Backend rodando em `http://localhost:5000`
+- Backend rodando na porta 5000
 
-### **1. Instalação**
-
+### **1. Instalar dependências**
 ```bash
-# Navegue para a pasta web
-cd nlw-agents/web
-
-# Instale as dependências
 npm install
 ```
 
-### **2. Configuração**
-
-O frontend se conecta automaticamente com o backend. Certifique-se de que a API esteja rodando na porta 5000.
-
-**URLs de desenvolvimento:**
-```typescript
-// Configuradas automaticamente para desenvolvimento
-const API_BASE_URL = "http://localhost:5000"
-const FRONTEND_URL = "http://localhost:5173"
-```
-
-### **3. Execute a aplicação**
-
+### **2. Iniciar desenvolvimento**
 ```bash
-# Modo desenvolvimento
 npm run dev
-
-# Build de produção
-npm run build
-
-# Preview do build
-npm run preview
 ```
 
-A aplicação estará disponível em: `http://localhost:5173`
+### **3. Acessar aplicação**
+```
+http://localhost:5173
+```
 
 ---
 
-## 📱 Funcionalidades
+## 🏗️ Estrutura do Projeto
 
-### **🏠 Página de Salas (`/`)**
-- Lista todas as salas disponíveis
-- Loading states com React Query
-- Navegação dinâmica para salas específicas
-- Design responsivo e acessível
-
-### **🚪 Página Individual (`/room/:id`)**
-- Visualização de sala específica
-- Roteamento dinâmico com React Router
-- State management otimizado
-
-### **🎨 Componentes UI**
-- Sistema de design consistente
-- Componentes reutilizáveis
-- Acessibilidade com Radix UI
-- Variantes com CVA
+```
+src/
+├── components/           # Componentes reutilizáveis
+│   ├── ui/              # Componentes base da UI
+│   │   ├── button.tsx   # Botão customizável
+│   │   ├── card.tsx     # Cards com variações
+│   │   ├── form.tsx     # Componentes de formulário
+│   │   ├── input.tsx    # Inputs estilizados
+│   │   └── ...          # Outros componentes UI
+│   ├── http/            # Hooks de requisições HTTP
+│   │   ├── use-create-room.ts
+│   │   ├── use-rooms.ts
+│   │   └── types/       # Tipos TypeScript das APIs
+│   ├── create-room-form.tsx
+│   ├── question-form.tsx
+│   ├── question-item.tsx
+│   ├── question-list.tsx
+│   └── room-list.tsx
+├── pages/               # Páginas da aplicação
+│   ├── create-room.tsx  # Página de criação de salas
+│   ├── room.tsx         # Página da sala
+│   └── record-room-audio.tsx # Gravação de áudio
+├── lib/                 # Utilitários e configurações
+│   ├── utils.ts         # Funções auxiliares
+│   └── dayjs.ts         # Configuração de datas
+├── app.tsx              # Componente raiz
+└── main.tsx             # Entry point
+```
 
 ---
 
 ## 🎨 Design System
 
 ### **Componentes Base**
+- **Button** - Botões com variantes (primary, secondary, ghost)
+- **Card** - Cards com header, content e footer
+- **Form** - Formulários com validação integrada
+- **Input/Textarea** - Campos de entrada estilizados
+- **Badge** - Labels e tags coloridas
 
-```
-src/components/ui/
-├── button.tsx           # Componente Button com variantes
-└── [outros componentes] # Expandir conforme necessário
-```
-
-### **Padrão de Componentes**
-
-```tsx
-// Exemplo: Button component
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-
-const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md font-medium transition-colors",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        outline: "border border-input hover:bg-accent",
-      },
-      size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
-```
-
-### **TailwindCSS v4**
-
-```css
-/* src/index.css */
-@import "tailwindcss";
-
-/* Variáveis CSS customizadas */
-:root {
-  --primary: 222.2 84% 4.9%;
-  --primary-foreground: 210 40% 98%;
-  /* ... outras variáveis */
-}
-```
+### **Padrões de Design**
+- **Mobile-first** - Design responsivo
+- **Acessibilidade** - Componentes Radix UI
+- **Dark mode ready** - Preparado para tema escuro
+- **Consistent spacing** - Sistema de espaçamento TailwindCSS
 
 ---
 
-## 🔄 State Management
+## 📱 Funcionalidades
 
-### **TanStack Query**
+### **Gerenciamento de Salas**
+- ✅ Listagem de salas existentes
+- ✅ Criação de novas salas com validação
+- ✅ Navegação entre salas
+- ✅ Interface responsiva
 
-```tsx
-// Exemplo: Hook para buscar salas
-import { useQuery } from "@tanstack/react-query";
+### **Sistema de Perguntas**
+- ✅ Visualização de perguntas por sala
+- ✅ Formulário de criação de perguntas
+- ✅ Validação de entrada com Zod
+- ✅ Atualização em tempo real
 
-export function useRooms() {
-  return useQuery({
-    queryKey: ["get-rooms"],
-    queryFn: async () => {
-      const response = await fetch(`${API_BASE_URL}/api/v1/rooms`);
-      return response.json();
-    },
-    staleTime: 5 * 60 * 1000, // 5 minutos
-  });
-}
-```
-
-### **React Router v7**
-
-```tsx
-// App.tsx
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-export function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<CreateRoom />} index />
-        <Route element={<Room />} path="/room/:id" />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-```
+### **Gravação de Áudio**
+- ✅ Gravação diretamente no navegador
+- ✅ Upload automático para transcrição
+- ✅ Suporte a WebRTC MediaRecorder
+- ✅ Interface intuitiva de controle
 
 ---
 
-## 📋 Scripts Disponíveis
-
-```bash
-# Desenvolvimento
-npm run dev              # Inicia dev server com HMR
-
-# Build
-npm run build           # Build otimizado para produção
-npm run preview         # Preview do build local
-
-# Qualidade de código
-npx biome check         # Verifica linting e formatting
-npx biome check --fix   # Corrige automaticamente
-```
-
----
-
-## 🏗️ Arquitetura
-
-### **Estrutura de Pastas**
-
-```
-src/
-├── components/          # Componentes reutilizáveis
-│   └── ui/             # Componentes base do design system
-├── pages/              # Páginas da aplicação
-│   ├── create-room.tsx # Página principal (lista de salas)
-│   └── room.tsx        # Página individual da sala
-├── lib/                # Utilitários e configurações
-│   └── utils.ts        # Funções auxiliares (cn, etc.)
-├── app.tsx             # Componente raiz da aplicação
-├── main.tsx            # Ponto de entrada React
-├── index.css           # Estilos globais e TailwindCSS
-└── vite-env.d.ts       # Tipos do Vite
-```
-
-### **Padrões de Desenvolvimento**
-
-- **Component-Based Architecture** - Componentes reutilizáveis
-- **Custom Hooks** - Lógica compartilhada
-- **Compound Components** - Componentes compostos
-- **Render Props** - Composição avançada
-- **Error Boundaries** - Tratamento de erros (planejado)
-
----
-
-## 🔧 Build e Deploy
+## 🔧 Configuração
 
 ### **Vite Configuration**
-
 ```typescript
-// vite.config.ts
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+// Alias para imports absolutos
+resolve: {
+  alias: {
+    '@': path.resolve(__dirname, './src'),
+  },
+}
 
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  build: {
-    outDir: 'dist',
-    sourcemap: true,
-  },
-  server: {
-    port: 5173,
-    host: true,
-  },
-})
+// Plugins configurados
+plugins: [
+  react(),           // Suporte React 19
+  tailwindcss()      // TailwindCSS 4
+]
 ```
 
-### **Build para Produção**
+### **TailwindCSS**
+- Configuração moderna com TailwindCSS 4
+- Componentes customizados com CVA
+- Sistema de cores consistente
+- Animações e transições suaves
 
+### **TypeScript**
+- Configuração estrita para máxima segurança
+- Tipos compartilhados com backend
+- Auto-complete completo em toda aplicação
+
+---
+
+## 📡 Integração com API
+
+### **HTTP Hooks Customizados**
+```typescript
+// Exemplo de hook para criação de sala
+const { mutateAsync: createRoom } = useCreateRoom();
+
+// Gerenciamento automático de cache
+const { data: rooms, isLoading } = useRooms();
+```
+
+### **Validação de Formulários**
+```typescript
+// Schema Zod para validação
+const createRoomSchema = z.object({
+  name: z.string().min(3),
+  description: z.string(),
+});
+
+// Integração com React Hook Form
+const form = useForm({
+  resolver: zodResolver(createRoomSchema),
+});
+```
+
+---
+
+## 🚀 Build e Deploy
+
+### **Scripts Disponíveis**
 ```bash
-# Build otimizado
-npm run build
+# Desenvolvimento
+npm run dev          # Servidor de desenvolvimento
 
-# Análise do bundle
-npx vite-bundle-analyzer dist/
+# Produção
+npm run build        # Build otimizado
+npm run preview      # Preview do build local
 ```
+
+### **Build Otimizado**
+- **Tree-shaking** automático
+- **Code splitting** por rota
+- **Assets otimizados** (imagens, fontes)
+- **Bundle analysis** com Vite
 
 ### **Deploy**
+```bash
+# Build para produção
+npm run build
 
-**Variáveis de ambiente para produção:**
-```env
-VITE_API_BASE_URL=https://sua-api-de-producao.com
+# Deploy estático (Vercel, Netlify, etc.)
+# Pasta 'dist' contém os arquivos otimizados
 ```
-
-**Plataformas sugeridas:**
-- **Vercel** - Deploy automático com GitHub
-- **Netlify** - Static site hosting
-- **GitHub Pages** - Hosting gratuito
 
 ---
 
 ## 🎯 Performance
 
 ### **Otimizações Implementadas**
+- ⚡ **React 19** - Concurrent rendering
+- 📦 **Vite HMR** - Hot Module Replacement
+- 🔄 **TanStack Query** - Cache inteligente
+- 🎨 **TailwindCSS** - CSS otimizado
+- 📱 **Lazy loading** - Carregamento sob demanda
 
-- ⚡ **Vite HMR** - Hot Module Replacement
-- 🔄 **React Query Caching** - Cache inteligente de dados
-- 📦 **Code Splitting** - Lazy loading de rotas
-- 🗜️ **Tree Shaking** - Eliminação de código morto
-- 🎨 **TailwindCSS Purging** - CSS otimizado
-
-### **Métricas de Performance**
-
-```bash
-# Análise do bundle
-npm run build
-npm run preview
-
-# Lighthouse audit recomendado
-npx lighthouse http://localhost:4173
-```
+### **Web Vitals**
+- **LCP** < 2.5s (Largest Contentful Paint)
+- **FID** < 100ms (First Input Delay)
+- **CLS** < 0.1 (Cumulative Layout Shift)
 
 ---
 
-## 🧪 Testing (Planejado)
+## 🛠️ Desenvolvimento
 
+### **Comandos Úteis**
 ```bash
-# Ferramentas sugeridas para testes
-npm install -D vitest @testing-library/react @testing-library/jest-dom
+# Instalar nova dependência
+npm install <package>
+
+# Verificar tipos TypeScript
+npx tsc --noEmit
+
+# Linting e formatação
+npx biome check src/
+npx biome format src/ --write
+
+# Análise do bundle
+npm run build
+npx vite-bundle-analyzer
+```
+
+### **Estrutura de Componentes**
+```tsx
+// Padrão de componente funcional
+interface ComponentProps {
+  // Props tipadas
+}
+
+export function Component({ }: ComponentProps) {
+  // Hooks no topo
+  // Lógica do componente
+  // Return JSX
+}
 ```
 
 ---
 
 ## 🤝 Contribuição
 
-Desenvolvido seguindo as melhores práticas do **NLW da Rocketseat**:
+Desenvolvido durante o **NLW (Next Level Week)** da **[Rocketseat](https://rocketseat.com.br/)**
 
-- ✅ Componentes reutilizáveis
-- ✅ TypeScript strict mode
-- ✅ Acessibilidade (a11y)
-- ✅ Performance otimizada
-- ✅ Mobile-first design
+### **Guidelines de Desenvolvimento**
+1. **Components** - Sempre tipados com TypeScript
+2. **Hooks** - Extrair lógica complexa para hooks customizados
+3. **Styling** - Usar TailwindCSS + componentes Radix UI
+4. **Forms** - React Hook Form + Zod para validação
+5. **State** - TanStack Query para estado servidor
 
 ---
 
-## 📄 Licença
+## 📚 Recursos Adicionais
 
-Projeto desenvolvido durante o NLW da **[Rocketseat](https://rocketseat.com.br/)**
+### **Documentação**
+- [React 19 Docs](https://react.dev/)
+- [TailwindCSS Docs](https://tailwindcss.com/docs)
+- [TanStack Query](https://tanstack.com/query/latest)
+- [Radix UI](https://radix-ui.com/primitives)
+
+### **Ferramentas de Debug**
+- React DevTools
+- TanStack Query DevTools
+- Vite DevTools
 
 ---
 
@@ -366,6 +319,6 @@ Projeto desenvolvido durante o NLW da **[Rocketseat](https://rocketseat.com.br/)
 
 **[⬆ Voltar ao topo](#nlw-agents---frontend-web-)**
 
-Feito com 💜 e ⚛️ React
+Feito com 💜 durante o NLW da Rocketseat
 
 </div>

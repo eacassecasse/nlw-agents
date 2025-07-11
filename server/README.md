@@ -6,11 +6,9 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Fastify](https://img.shields.io/badge/Fastify-000000?style=for-the-badge&logo=fastify&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Google AI](https://img.shields.io/badge/Google_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
-**API REST moderna e performática construída com Fastify e TypeScript**
-
-[🚀 Quick Start](#quick-start) • [📡 API](#endpoints) • [🗄️ Database](#database) • [🐳 Docker](#docker)
+**API REST robusta com IA integrada para transcrição e embeddings de áudio**
 
 </div>
 
@@ -18,223 +16,142 @@
 
 ## 📖 Sobre
 
-O backend do **NLW Agents** é uma API REST robusta desenvolvida com foco em performance, type-safety e escalabilidade. Utiliza as melhores práticas de desenvolvimento moderno com TypeScript nativo e um stack de tecnologias de ponta.
+Backend da aplicação **NLW Agents** desenvolvido com **Fastify**, **TypeScript** e **PostgreSQL**. Implementa funcionalidades de:
 
-### ✨ Características Principais
-
-- ⚡ **Alta Performance** - Fastify como framework web
-- 🔒 **Type-Safe** - TypeScript nativo com validação Zod
-- 🗄️ **ORM Moderno** - Drizzle ORM para gestão de dados
-- 🐳 **Containerizado** - Setup completo com Docker
-- 📋 **Migrations** - Versionamento automático do banco
-- 🔍 **Validação** - Esquemas robustos com Zod
-- 🌐 **CORS** - Configuração para desenvolvimento cross-origin
+- 🎤 **Transcrição de áudio** com Google Gemini AI
+- 🧠 **Geração de embeddings** para busca semântica
+- 🏠 **Gerenciamento de salas** e perguntas
+- 📊 **API REST completa** com validação TypeScript
 
 ---
 
 ## 🛠️ Stack Tecnológica
 
-### **Runtime & Language**
+### **Core**
 - **[Node.js](https://nodejs.org/)** - Runtime JavaScript moderno
-- **[TypeScript](https://www.typescriptlang.org/)** - Superset tipado (nativo via `--experimental-strip-types`)
+- **[TypeScript](https://www.typescriptlang.org/)** - Tipagem estática
+- **[Fastify](https://fastify.dev/)** - Framework web high-performance
 
-### **Web Framework**
-- **[Fastify](https://fastify.dev/)** - Framework web de alta performance
-- **[fastify-type-provider-zod](https://github.com/turkerdev/fastify-type-provider-zod)** - Integração TypeScript + Zod
-- **[@fastify/cors](https://github.com/fastify/fastify-cors)** - Middleware CORS
-
-### **Database & ORM**
-- **[PostgreSQL](https://www.postgresql.org/)** - Banco de dados relacional
+### **Banco de Dados**
+- **[PostgreSQL](https://www.postgresql.org/)** - Banco relacional
+- **[pgvector](https://github.com/pgvector/pgvector)** - Extensão para vetores
 - **[Drizzle ORM](https://orm.drizzle.team/)** - ORM moderno e type-safe
-- **[postgres](https://github.com/porsager/postgres)** - Driver PostgreSQL minimalista
+- **[Drizzle Kit](https://orm.drizzle.team/kit-docs/overview)** - Migrations e introspection
 
-### **Validation & Schema**
-- **[Zod](https://zod.dev/)** - Validação de esquemas TypeScript-first
+### **Inteligência Artificial**
+- **[@google/genai](https://github.com/google/genai)** - Google Gemini AI SDK
+- **Gemini 2.5 Flash** - Modelo para transcrição e embeddings
 
-### **Development Tools**
-- **[Biome](https://biomejs.dev/)** - Linter e formatter ultra-rápido
-- **[Drizzle Kit](https://orm.drizzle.team/kit-docs/overview)** - CLI para migrations e introspection
-- **[Docker](https://www.docker.com/)** - Containerização do ambiente
+### **Validação e Tipagem**
+- **[Zod](https://zod.dev/)** - Validação de schemas TypeScript-first
+- **[fastify-type-provider-zod](https://github.com/turkerdev/fastify-type-provider-zod)** - Integração Fastify + Zod
+
+### **Infraestrutura**
+- **[Docker](https://www.docker.com/)** - Containerização
+- **[@fastify/cors](https://github.com/fastify/fastify-cors)** - CORS middleware
+- **[@fastify/multipart](https://github.com/fastify/fastify-multipart)** - Upload de arquivos
 
 ---
 
 ## ⚡ Quick Start
 
 ### **Pré-requisitos**
-- Node.js 18+ 
+- Node.js 18+
 - Docker e Docker Compose
-- PostgreSQL (via Docker)
+- Chave da API do Google Gemini
 
-### **1. Instalação**
-
+### **1. Instalar dependências**
 ```bash
-# Clone o repositório (se não fez ainda)
-git clone https://github.com/seu-usuario/nlw-agents.git
-cd nlw-agents/server
-
-# Instale as dependências
 npm install
 ```
 
-### **2. Configuração do Ambiente**
-
+### **2. Configurar ambiente**
 ```bash
-# Copie o arquivo de exemplo
 cp .env.example .env
-
-# Configure as variáveis no .env
-nano .env
+# Configure as variáveis:
+# DATABASE_URL=postgresql://docker:docker@localhost:5432/agents
+# GOOGLE_GENAI_API_KEY=sua_chave_aqui
+# PORT=5000
 ```
 
-**Variáveis de ambiente necessárias:**
-```env
-# Server
-PORT=5000
-
-# Database
-DATABASE_URL="postgresql://docker:docker@localhost:5432/agents"
-
-# CORS (opcional para desenvolvimento)
-FRONTEND_URL="http://localhost:5173"
-```
-
-### **3. Banco de Dados**
-
+### **3. Iniciar banco de dados**
 ```bash
-# Inicie o PostgreSQL via Docker
 docker-compose up -d
+```
 
-# Execute as migrations
+### **4. Executar migrations**
+```bash
 npx drizzle-kit migrate
+```
 
-# (Opcional) Popule com dados de exemplo
+### **5. Popular banco (opcional)**
+```bash
 npm run db:seed
 ```
 
-### **4. Execute a aplicação**
-
+### **6. Iniciar servidor**
 ```bash
-# Modo desenvolvimento (com watch)
+# Desenvolvimento
 npm run start:dev
 
-# Modo produção
+# Produção
 npm run start:build
 ```
 
-A API estará disponível em: `http://localhost:5000`
-
 ---
 
-## 📡 Endpoints
+## 📡 API Endpoints
 
 ### **Health Check**
 ```http
 GET /api/v1/health
 ```
-**Response:**
-```json
-{
-  "status": "OK"
-}
-```
 
-### **Rooms**
+### **Salas**
 ```http
-GET /api/v1/rooms
-```
-**Response:**
-```json
-[
-  {
-    "id": "uuid",
-    "name": "Nome da Sala"
-  }
-]
+GET    /api/v1/rooms                 # Listar salas
+POST   /api/v1/rooms                 # Criar sala
+GET    /api/v1/rooms/:id/questions   # Perguntas da sala
 ```
 
----
-
-## 🗄️ Database
-
-### **Schema Design**
-
-O projeto utiliza **Drizzle ORM** com uma arquitetura schema-first:
-
-```
-src/db/
-├── schema/
-│   ├── index.ts          # Exportações centralizadas
-│   └── rooms.ts          # Schema das salas
-├── migrations/           # Arquivos de migração
-├── connection.ts         # Configuração da conexão
-└── seed.ts              # Dados de exemplo
+### **Perguntas**
+```http
+POST   /api/v1/rooms/:roomId/questions  # Criar pergunta
 ```
 
-### **Migrations**
-
-```bash
-# Gerar nova migration
-npx drizzle-kit generate
-
-# Aplicar migrations
-npx drizzle-kit migrate
-
-# Visualizar schema
-npx drizzle-kit studio
-```
-
-### **Seeding**
-
-```bash
-# Popular banco com dados de exemplo
-npm run db:seed
+### **Áudio e IA**
+```http
+POST   /api/v1/rooms/:roomId/audio      # Upload e transcrição de áudio
 ```
 
 ---
 
-## 🐳 Docker
+## 🗄️ Estrutura do Banco
 
-### **Serviços Disponíveis**
+### **Tabelas Principais**
 
-O `docker-compose.yml` inclui:
-
-- **database** - PostgreSQL 17 padrão
-- **nlw-agents-pg** - PostgreSQL com pgvector (para futuras features de AI)
-
-### **Comandos Docker**
-
-```bash
-# Iniciar todos os serviços
-docker-compose up -d
-
-# Ver logs
-docker-compose logs -f
-
-# Parar serviços
-docker-compose down
-
-# Rebuild completo
-docker-compose down -v
-docker-compose up -d --build
+#### **rooms**
+```sql
+- id: UUID (PK)
+- name: TEXT
+- created_at: TIMESTAMP
 ```
 
----
+#### **questions**
+```sql
+- id: UUID (PK)  
+- room_id: UUID (FK)
+- message: TEXT
+- created_at: TIMESTAMP
+```
 
-## 📋 Scripts Disponíveis
-
-```bash
-# Desenvolvimento
-npm run start:dev          # Inicia com watch mode e hot reload
-
-# Produção
-npm run start:build        # Inicia em modo produção
-
-# Database
-npm run db:seed           # Popula banco com dados iniciais
-
-# Qualidade de código
-npx biome check           # Verifica linting e formatting
-npx biome check --fix     # Corrige automaticamente
+#### **audio_chunks**
+```sql
+- id: UUID (PK)
+- room_id: UUID (FK)
+- transcription: TEXT
+- embeddings: VECTOR(768)
+- created_at: TIMESTAMP
 ```
 
 ---
@@ -242,102 +159,118 @@ npx biome check --fix     # Corrige automaticamente
 ## 🏗️ Arquitetura
 
 ### **Estrutura de Pastas**
-
 ```
 src/
-├── db/                   # Camada de dados
-│   ├── schema/          # Definições de schema
-│   ├── migrations/      # Arquivos de migração
-│   ├── connection.ts    # Setup da conexão
-│   └── seed.ts         # Dados iniciais
-├── http/               # Camada HTTP
-│   └── routes/         # Definições de rotas
-├── env.ts             # Configuração de ambiente
-└── server.ts          # Ponto de entrada
+├── db/
+│   ├── connection.ts      # Conexão PostgreSQL
+│   ├── seed.ts           # Dados iniciais
+│   ├── schema/           # Esquemas Drizzle
+│   └── migrations/       # Migrations SQL
+├── http/
+│   └── routes/           # Definições de rotas
+├── services/
+│   └── gemini.ts         # Integração Google AI
+├── env.ts                # Configurações ambiente
+└── server.ts             # Servidor principal
 ```
 
-### **Padrões Utilizados**
-
-- **Clean Architecture** - Separação clara de camadas
-- **Type-First** - Definição de tipos antes da implementação
-- **Schema Validation** - Validação em runtime com Zod
-- **Repository Pattern** - Abstração da persistência
-- **Dependency Injection** - Inversão de dependências via Fastify
+### **Padrões Implementados**
+- **Type-Safe API** - Validação completa com Zod
+- **Repository Pattern** - Abstração da camada de dados
+- **Error Handling** - Tratamento robusto de erros
+- **Clean Architecture** - Separação de responsabilidades
 
 ---
 
-## 🔧 Configuração Avançada
+## 🤖 Funcionalidades de IA
 
-### **TypeScript Nativo**
+### **Transcrição de Áudio**
+- Converte áudio para texto em português brasileiro
+- Suporte a múltiplos formatos (WebM, MP3, WAV)
+- Pontuação e formatação automática
 
-O projeto utiliza a flag experimental `--experimental-strip-types` do Node.js para executar TypeScript nativamente:
+### **Embeddings Vetoriais**
+- Geração de vetores de 768 dimensões
+- Armazenamento otimizado com pgvector
+- Base para busca semântica futura
 
-```json
-{
-  "scripts": {
-    "start:dev": "node --env-file .env --experimental-strip-types --no-warnings --watch src/server.ts"
-  }
-}
+---
+
+## 🛠️ Scripts Disponíveis
+
+```bash
+# Desenvolvimento
+npm run start:dev        # Servidor com hot reload
+
+# Produção  
+npm run start:build      # Servidor otimizado
+
+# Banco de dados
+npm run db:seed          # Popular com dados iniciais
+npx drizzle-kit generate # Gerar migrations
+npx drizzle-kit migrate  # Executar migrations
+npx drizzle-kit studio   # Interface visual do banco
 ```
 
-### **Fastify + Zod Integration**
+---
 
-```typescript
-import { fastify } from "fastify";
-import { ZodTypeProvider } from "fastify-type-provider-zod";
+## 🔧 Configuração
 
-const app = fastify().withTypeProvider<ZodTypeProvider>();
+### **Variáveis de Ambiente**
+```env
+# Banco de dados
+DATABASE_URL=postgresql://user:pass@localhost:5432/agents
 
-// Validação automática com tipos inferidos
-app.get('/rooms', {
-  schema: {
-    response: {
-      200: z.array(roomSchema)
-    }
-  }
-}, async (request, reply) => {
-  // Response automaticamente tipado
-  return rooms;
-});
+# Google AI
+GOOGLE_GENAI_API_KEY=your_gemini_api_key_here
+
+# Servidor
+PORT=5000
+
+# CORS (desenvolvimento)
+FRONTEND_URL=http://localhost:5173
 ```
+
+### **Docker Compose**
+O projeto inclui configuração completa para PostgreSQL com pgvector:
+- PostgreSQL 17 com pgvector
+- Persistência de dados
+- Setup automático da extensão
 
 ---
 
 ## 🚀 Deploy
 
-### **Environment Variables**
+### **Produção**
+1. Configure as variáveis de ambiente
+2. Execute `npm run start:build`
+3. Configure proxy reverso (Nginx/Apache)
+4. Configure SSL/TLS
 
-Para produção, configure:
-
-```env
-NODE_ENV=production
-PORT=5000
-DATABASE_URL="sua-url-de-producao"
-```
-
-### **Build & Start**
-
-```bash
-# Para produção
-npm run start:build
+### **Docker**
+```dockerfile
+# Exemplo de Dockerfile para produção
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 5000
+CMD ["npm", "run", "start:build"]
 ```
 
 ---
 
-## 🤝 Contribuição
+## 🤝 Desenvolvimento
 
-Este backend foi desenvolvido seguindo as melhores práticas apresentadas no **NLW da Rocketseat**:
+Desenvolvido durante o **NLW (Next Level Week)** da **[Rocketseat](https://rocketseat.com.br/)**
 
-- Code Review via Pull Requests
-- Testes automatizados (em desenvolvimento)
-- CI/CD pipeline (planejado)
-- Documentação via OpenAPI (futuro)
-
----
-
-## 📄 Licença
-
-Projeto desenvolvido durante o NLW da **[Rocketseat](https://rocketseat.com.br/)**
+### **Contribuindo**
+1. Fork o projeto
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abra um Pull Request
 
 ---
 
@@ -345,6 +278,6 @@ Projeto desenvolvido durante o NLW da **[Rocketseat](https://rocketseat.com.br/)
 
 **[⬆ Voltar ao topo](#nlw-agents---backend-api-)**
 
-Feito com 💜 e ⚡ Fastify
+Feito com 💜 durante o NLW da Rocketseat
 
 </div>

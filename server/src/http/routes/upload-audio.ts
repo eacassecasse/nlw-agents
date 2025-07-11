@@ -37,7 +37,7 @@ export const uploadAudioRoute: FastifyPluginCallbackZod = (app) => {
         .values({
           roomId,
           transcription,
-          embeddings,
+          embeddings: sql`'${embeddings.join(", ")}'::vector`,
         })
         .returning();
 
