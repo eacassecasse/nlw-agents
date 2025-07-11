@@ -15,6 +15,13 @@
       "when": 1752171717051,
       "tag": "0001_loud_sunfire",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1752233996228,
+      "tag": "0002_mixed_mister_fear",
+      "breakpoints": true
     }
   ]
 }
